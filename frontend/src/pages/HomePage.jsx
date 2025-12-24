@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import RateLimitedUI from "../components/RateLimitedUI";
 import NoteCard from "../components/Notecard";
 import toast from "react-hot-toast";
-import api from "../lib/axios";  // ✅ correct import
+import api from "../lib/axios"; // Make sure baseURL = "http://localhost:5001/api"
 import NotesNotFound from "../components/NotesNotFound";
 
 const HomePage = () => {
@@ -13,12 +13,12 @@ const HomePage = () => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const res = await api.get("/notes");
+        const res = await api.get("/notes"); // This calls http://localhost:5001/api/notes
         setNotes(res.data);
         setIsRateLimited(false);
       } catch (error) {
         if (error.response?.status === 429) {
-          setIsRateLimited(true);
+          setIsRateLimited(true); // rate limit triggered
         } else {
           toast.error("Failed to load notes");
         }
@@ -31,7 +31,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-base-200">
       {isRateLimited && <RateLimitedUI />}
 
       {!isRateLimited && (
@@ -42,18 +42,12 @@ const HomePage = () => {
             </div>
           )}
 
-          {notes.length === 0 && !isRateLimited && <NotesNotFound/>}
-
-          {!loading && notes.length === 0 && (
-            <div className="text-center text-base-content py-10">
-              No notes found.
-            </div>
-          )}
+          {!loading && notes.length === 0 && <NotesNotFound />}
 
           {!loading && notes.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {notes.map((note) => (
-                <NoteCard key={note._id} note={note} setNotes={setNotes}/>
+                <NoteCard key={note._id} note={note} setNotes={setNotes} />
               ))}
             </div>
           )}
@@ -64,3 +58,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
