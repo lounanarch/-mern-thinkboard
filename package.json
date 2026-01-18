@@ -5,7 +5,7 @@
   "type": "commonjs",
   "scripts": {
     "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start-backend": "npm start --prefix backend",
+    "start-backend": "node backend/server.js",
     "start-frontend": "npm run build --prefix frontend"
   },
   "repository": {
@@ -24,4 +24,5 @@
     "concurrently": "^9.2.1"
   }
 }
+
 
