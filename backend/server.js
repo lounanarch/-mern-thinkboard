@@ -22,15 +22,11 @@ app.use(express.urlencoded({ extended: true })); // Parse URL-encoded bodies
 app.use(apiRateLimiter);
 
 // Enable CORS for frontend
-
-
-if (process.env.NODE_ENV !== "production") {
-  app.use(
-    cors({
-      origin: "http://localhost:5173",
-    })
-  );
-}
+app.use(
+  cors({
+    origin: "http://localhost:5173", // frontend URL
+  })
+);
 
 // Routes
 app.use("/api/notes", notesRoutes);
