@@ -1,22 +1,26 @@
 {
-  "name": "backend",
+  "name": "mern-think-board",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "nodemon server.js",
-    "start": "node server.js"
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start-backend": "npm start --prefix backend",
+    "start-frontend": "npm run build --prefix frontend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lounanarch/-mern-thinkboard.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "bugs": {
+    "url": "https://github.com/lounanarch/-mern-thinkboard/issues"
+  },
+  "homepage": "https://github.com/lounanarch/-mern-thinkboard#readme",
   "description": "",
-  "dependencies": {
-    "@upstash/redis": "^1.35.7",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^4.22.1",
-    "express-rate-limit": "^8.2.1",
-    "mongoose": "^9.0.0"
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }

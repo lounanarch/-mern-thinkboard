@@ -2,11 +2,11 @@
   "name": "mern-think-board",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "dev": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
     "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start-backend": "npm run dev --prefix backend",
-    "start-frontend": "npm run dev --prefix frontend"
+    "start-backend": "npm start --prefix backend",
+    "start-frontend": "npm run build --prefix frontend"
   },
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/lounanarch/-mern-thinkboard/issues"
   },
@@ -25,3 +24,4 @@
     "concurrently": "^9.2.1"
   }
 }
+
